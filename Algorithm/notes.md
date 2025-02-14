@@ -112,6 +112,152 @@ a,b 为随机值，p,m为固定值
 
 ![image](https://github.com/user-attachments/assets/ef1786f7-7923-4712-92a8-dbf4e12f8cda)
 
+# Week-4
+
+内容：红黑树
+
+二分搜索树：左子树所有节点比根小，右子树所有节点比根大，左右子树都是二分搜索树
+
+问题：最坏情况下搜索为O(n)
+
+### 2-3-4树
+
+节点种类：
+
+![image](https://github.com/user-attachments/assets/d25816ce-318c-4ec5-b2b4-096e1b1841d0)
+
+**2-4树的插入：**
+
+搜索直到到达叶子节点
+
+如果是2/3节点：插入节点
+
+如果是4节点：选取一个中间值，挤到父节点，然后把原节点一分为二
+
+![image](https://github.com/user-attachments/assets/903e66f4-20b3-435a-9e97-9c84ea0810f7)
+
+### 红黑树
+
+1. 节点为红色或黑色
+2. 根节点为黑色
+3. 红色节点的子节点为黑色(没有连续的红色节点)
+4. 对于所有节点，到叶子节点的不同路径会经过同样数量的黑色节点
+5. 叶子节点为黑色，不含数据的节点(T.nil)，通常不显示
+
+#### 时间复杂度
+
+搜索：O(logn)
+
+原因：h <= 2log(n+1)
+
+#### 红黑树和2-4树的互相转换：
+
+**红黑树转2-4树：**
+
+红节点并入黑色父节点
+
+**2-4树转红黑树：**
+
+4节点：选中间值为黑色父节点，其他的为红色子节点
+
+3节点：选一个为黑色父节点，另一个为红色子节点
+
+2节点：涂成黑色
+
+![image](https://github.com/user-attachments/assets/1a935209-9e5f-44bf-bbb7-01e58eb898da)
+
+#### 红黑树的插入
+
+1. 标记新节点为红色
+2. 解决可能的红-红冲突
+3. 标记根节点为黑色
+
+**红冲突的三种类型**
+
+1. case 1
+
+   父节点的兄弟节点为红色
+
+   解决：父节点和祖父节点互换颜色，然后标记兄弟为黑色
+2. case 2
+
+   ![image](https://github.com/user-attachments/assets/0e3264ce-ddce-4e10-9eb2-9cf1e4394fe1)
+
+   转化为case 3
+
+3. case 3
+   
+   父节点的兄弟节点为黑色或无(2和3是分别为对称的两种情况)
+
+   解决：父节点与祖父节点互换颜色，然后旋转
+
+   ![image](https://github.com/user-attachments/assets/b3ceda0a-e646-48f1-a7cd-889f83ec503a)
+
+   对于他们的子树，按照正确的大小关系排列即可(70的右子树变成85的左子树)
+
+![image](https://github.com/user-attachments/assets/aa6b6535-eaf7-439c-8bf5-b22471d3c2f0)
+
+```
+RB-INSERT(T,z)
+  y=T.nil  //y is the parent of x
+  x=T.root
+
+  //确认要插入的位置
+  while x≠T.nil
+    y=x
+    if z.key < x.key
+      x=x.left
+    else
+      x=x.right
+
+  //进行绑定
+  z.p=y
+  if y==T.nil
+    T.root=z  //tree T was empty
+  else
+    if z.key < y.key
+      y.left=z
+    else
+      y.right=z
+
+  //其他处理
+  z.left=T.nil
+  z.right=T.nil
+  z.color=RED
+  RB-INSERT-FIXUP(T,z)
+
+RB-INSERT-FIXUP(T,z)
+
+  while z.p.color == RED
+
+    if z.p == z.p.p.right  //parent is a right child
+      y = z.p.p.left    //parent’s sibling
+
+      if y.color == RED  //case 1
+        z.p.color = BLACK
+        y.color = BLACK
+        z.p.p.color = RED
+        z = z.p.p  //递归修复直到根
+      else
+        if z == z.p.left  //case 2
+        z = z.p
+        RIGHT-ROTATE(T,z)
+
+        //case 3
+        z.p.color = BLACK  
+        z.p.p.color = RED
+        LEFT-ROTATE(T,z.p.p)
+    else(对称操作
+  T.root.color = BLACK
+
+```
+
+
+
+
+
+
+
 
 
 
