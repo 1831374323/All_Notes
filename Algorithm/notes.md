@@ -82,3 +82,36 @@ for i = A.length to 2  //n次
   A.heap-size = A.heap-size - 1
   MAX-HEAPIFY(A, 1)  //Olog(n)
 ```
+
+# Week-3
+内容：哈希表
+
+查询/插入/删除/修改-O(1)
+
+哈希函数: H<sub>_pm_</sub> = {h<sub>_ab_</sub>(x) = ((_a_ x+_b_) mod _p_) mod _m_}
+
+0<a≤p−1
+
+0<b≤p−1
+
+a,b 为随机值，p,m为固定值
+
+碰撞概率：1/m
+
+### 完美哈希
+
+二阶哈希表,要插入n个值
+
+![image](https://github.com/user-attachments/assets/2975a0b0-2181-4c8a-9138-a7cd4c4f4c80)
+
+一阶表:
+
+![image](https://github.com/user-attachments/assets/6a5c1c87-b925-46ee-85d0-a61ba4fbdc21)
+
+二阶表大小: m<sub>i</sub>=n<sub>i</sub><sup>2</sup>
+
+![image](https://github.com/user-attachments/assets/ef1786f7-7923-4712-92a8-dbf4e12f8cda)
+
+
+
+
