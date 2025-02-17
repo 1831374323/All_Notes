@@ -1,5 +1,7 @@
 # 生命周期
 
+https://docs.unity3d.com/2022.3/Documentation/Manual/ExecutionOrder.html
+
 ### 开始阶段
 
 Awake()
