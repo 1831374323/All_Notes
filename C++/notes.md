@@ -4,8 +4,8 @@
 
 ### <algorithm>
 
-lowerbound:有序范围内查找第一个不小于给定值的元素
+lower_bound:有序范围内查找第一个不小于给定值的元素
 
-upperbound:有序范围内查找第一个大于给定值的元素
+upper_bound:有序范围内查找第一个大于给定值的元素
 
 使用二分查找，O(logn).
