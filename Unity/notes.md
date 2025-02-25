@@ -56,3 +56,15 @@ OnDisable()
 
 OnDestory()
 
+# ECS架构
+
+https://zhuanlan.zhihu.com/p/59879279
+
+Entity-Component-System
+
+![image](https://github.com/user-attachments/assets/afc08808-3ae5-401b-810b-50074f3c85ea)
+
+Entity-Unity GameObject
+
+Component-Unity Component
+
