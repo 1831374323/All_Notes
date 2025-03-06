@@ -68,3 +68,21 @@ Entity-Unity GameObject
 
 Component-Unity Component
 
+# 物理
+
+### 刚体
+
+rigidbodyType 会导致不同的碰撞结果
+
+* Dynamic
+* Kinematic
+* Static
+
+### 碰撞
+
+碰撞控制的三种方式优先级如下：
+
+Physics2D.IgnoreCollision > Layer Overrides > Layer Collision Matrix
+
+Layer Overrides: collider的一个属性
+
