@@ -86,3 +86,14 @@ Physics2D.IgnoreCollision > Layer Overrides > Layer Collision Matrix
 
 Layer Overrides: collider的一个属性
 
+# Layer
+
+LayerMask: 用于表示一个或多个图层的位掩码。
+
+NameToLayer等返回的是index,和LayerMask掩码不同。
+
+例：NameToLayer.("六号图层") --> 6
+
+layerMask --> 100 0000 --> 64
+
+正确转换: layerMask = 1 << LayerMask.NameToLayer("六号图层")
